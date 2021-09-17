@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-text-align_center">
+        <lightning-button-icon 
+                    icon-name="action:back"  
+                    alternative-text="back" 
+                    title="Back"
+                    variant="brand"
+                    onclick={handleBack}>
+        </lightning-button-icon>
+    </div>
+    <lightning-card title="Quick Close Case" icon-name="standard:case">
+        <lightning-record-edit-form object-api-name="Case" record-id={caseRecordId} onsuccess={handleSuccess}>
+            <lightning-messages>
+            </lightning-messages>
+            <lightning-output-field field-name="AccountId">
+            </lightning-output-field>
+            <lightning-input-field field-name="Status" value="Closed" disabled>
+            </lightning-input-field>
+            <lightning-input-field field-name="Subject" value="Case is Closed by Quick close Button." disabled>
+            </lightning-input-field>
+            <lightning-input-field field-name="Description">
+            </lightning-input-field>
+            <lightning-button class="slds-m-top_small" type="submit" label="Update">
+            </lightning-button>
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

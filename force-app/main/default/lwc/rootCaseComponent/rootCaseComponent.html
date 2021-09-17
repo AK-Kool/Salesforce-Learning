@@ -1,0 +1,51 @@
+<template>
+
+    <div class="slds-text-align_center slds-box" style="background-color: white;">
+        <button class="slds-button slds-button_brand" onclick={handleClick}>View/Close Cases</button>
+    </div>
+
+    <template if:true={isModalOpen}>
+        <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true"
+            aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+            <div class="slds-modal__container">
+
+                <template if:true={isHeaderVisible}>
+                    <header class="slds-modal__header">
+                        <button class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+                            title="Close" onclick={handleClose}>
+                            <svg class="slds-button__icon slds-button__icon_large" aria-hidden="true">
+                                <use xlink:href="/_slds/icons/utility-sprite/svg/symbols.svg#close"></use>
+                            </svg>
+                            <span class="slds-assistive-text">Close</span>
+                        </button>
+                        <c-header-for-case></c-header-for-case>
+                    </header>
+                </template>
+
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <template if:true={isDataVisible}>
+                        <div>
+                            <c-data-for-case record-id={recordId} oncaseselect={handleCaseSelect}></c-data-for-case>
+                        </div>
+                    </template>
+                    <template if:true={isNewVisible}>
+                        <div>
+                            <c-create-new-case record-id={recordId}></c-create-new-case>
+                        </div>
+                    </template>
+                    <template if:true={isQuickCloseVisible}>
+                        <div>
+                            <c-quick-close-case case-record-id={caseRecordId}></c-quick-close-case>
+                        </div>
+                    </template>
+                </div>
+                <template if:true={isFooterVisible}>
+                    <footer class="slds-modal__footer">
+                        <c-footer-for-case></c-footer-for-case>
+                    </footer>
+                </template>
+            </div>
+        </section>
+        <div class="slds-backdrop slds-backdrop_open"></div>
+    </template>
+</template>

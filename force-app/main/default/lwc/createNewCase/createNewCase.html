@@ -1,0 +1,27 @@
+<template>
+    <div class="slds-text-align_center">
+        <lightning-button-icon 
+                    icon-name="action:back"  
+                    alternative-text="back" 
+                    title="Back"
+                    variant="brand"
+                    onclick={handleBack}>
+        </lightning-button-icon>
+    </div>
+    <lightning-card title="New Case" icon-name="standard:case">
+        <lightning-record-edit-form object-api-name="Case"
+                        onsuccess={handleSuccess}>
+            <lightning-messages>
+            </lightning-messages>
+            <lightning-input-field field-name="Subject">
+            </lightning-input-field>
+            <lightning-input-field field-name="Status" value="New" disabled>
+            </lightning-input-field>
+            <lightning-input-field field-name="Description">
+            </lightning-input-field>
+            <lightning-input-field field-name="AccountId" value={recordId} disabled>
+            </lightning-input-field>
+            
+        </lightning-record-edit-form>
+    </lightning-card>
+</template>

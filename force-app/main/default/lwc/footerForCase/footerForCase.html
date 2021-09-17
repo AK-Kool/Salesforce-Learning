@@ -1,0 +1,7 @@
+<template>
+    <lightning-button label="Cancel" name="cancel" onclick={handleClick}></lightning-button>
+    
+    <template if:true={isCreateVisible}>
+        <lightning-button label="Create" name="create" onclick={handleClick}></lightning-button>
+    </template> 
+</template>
